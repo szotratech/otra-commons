@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.otra.commons</groupId>
+		<artifactId>otra-commons</artifactId>
+		<version>0.0.4</version>
+	</parent>
+	<artifactId>otra-commons-tesseract</artifactId>
+	<name>otra-commons-tesseract</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-jar</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<!-- <copy -->
+								<!-- file="${project.build.directory}/${project.ArtifactId}-${project.version}.jar" -->
+								<!-- todir="/Users/satuo20/osgi/bangkanche" overwrite="true" /> -->
+								<copy
+									file="${project.build.directory}/${project.ArtifactId}-${project.version}.jar"
+									todir="${osgi.bundle.output}" overwrite="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.tess4j</groupId>
+			<artifactId>tess4j</artifactId>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.sun.media</groupId> -->
+<!-- 			<artifactId>jai_imageio</artifactId> -->
+<!-- 			<version>1.1</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>cn.otra.commons</groupId>
+			<artifactId>otra-commons-core</artifactId>
+			<version>0.0.4</version>
+		</dependency>
+
+		<!-- @Inject -->
+
+	</dependencies>
+</project>
